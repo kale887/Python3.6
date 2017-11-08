@@ -1,5 +1,6 @@
-#!/usr/bin/python
-0
+#!/usr/bin/python3
+
+
 class Employee:
     """ Common base class for Employee"""
     count = 0
@@ -15,5 +16,5 @@ class Employee:
     def displayEmployee(self):
         print "Name : ", self.name, ", Salary: ", self.salary
 
-
+    
 emp1 = Employee.displayCount()
