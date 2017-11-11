@@ -8,6 +8,7 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/local'
 
 mongo = PyMongo(app)
 
+
 @app.route('/framework', methods=['GET'])
 def get_all_frameworks():
     framework = mongo.db.framework
@@ -18,6 +19,7 @@ def get_all_frameworks():
         output.append({'name': q['name'], 'language': q['language']})
 
     return jsonify({'result': output})
+
 
 @app.route('/framework/<name>', methods=['GET'])
 def get_one_framework(name):
@@ -31,6 +33,9 @@ def get_one_framework(name):
         output = 'No results found'
 
     return jsonify({'result': output})
+
+
+# route () decorator trigger URL should trigger our function
 
 @app.route('/framework', methods=['POST'])
 def add_framework():
@@ -46,5 +51,10 @@ def add_framework():
 
     return jsonify({'result': output})
 
+
+# debug support the server will reload itself on code changes,
+# and it will also provide you with a helpful debugger if things go wrong.
 if __name__ == '__main__':
     app.run(debug=True)
+
+    # If app.run(host= '0.0.0.0') this tells os to listen on all public IP's
